@@ -18,7 +18,7 @@ export class EventsRepositoryService {
       start: new Date(2022, 3, 7, 18, 0, 0, 0),
       end: new Date(2022, 3, 7, 19, 0, 0, 0),
       ageRequirement: 18,
-      favorited: false,
+      favorited: true,
     },
     {
       eventId: 2,
@@ -30,7 +30,7 @@ export class EventsRepositoryService {
       start: new Date(2022, 3, 11, 8, 0, 0, 0),
       end: new Date(2022, 3, 11, 9, 0, 0, 0),
       ageRequirement: 18,
-      favorited: false,
+      favorited: true,
     },
     {
       eventId: 3,

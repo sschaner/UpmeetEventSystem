@@ -1,0 +1,23 @@
+<div>
+  <h1>Favorite Events</h1>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let event of events">
+      <div
+        class="d-flex justify-content-between"
+        *ngIf="event.favorited == true"
+      >
+        <a [routerLink]="['/event-details', event.eventId]">{{
+          event.title | uppercase
+        }}</a>
+
+        <form class="d-flex">
+          <button type="submit" class="btn btn-sm btn-outline-danger">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<button [routerLink]="'/events'" class="btn btn-outline-primary">Home</button>
