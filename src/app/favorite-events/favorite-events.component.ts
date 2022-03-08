@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleInfo,
+  faHome,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { EventsRepositoryService } from '../events-repository.service';
 import { IEvent } from '../interfaces/IEvent';
 
@@ -11,6 +15,8 @@ import { IEvent } from '../interfaces/IEvent';
 export class FavoriteEventsComponent implements OnInit {
   events: IEvent[] = [];
   faTrash = faTrash;
+  faCircleInfo = faCircleInfo;
+  faHome = faHome;
 
   constructor(private repo: EventsRepositoryService) {}
 

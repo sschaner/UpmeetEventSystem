@@ -1,10 +1,14 @@
 <div>
   <h1>Events</h1>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let event of events">
-      <a [routerLink]="['/event-details', event.eventId]">{{
-        event.title | uppercase
-      }}</a>
+    <li
+      class="list-group-item d-flex justify-content-between"
+      *ngFor="let event of events"
+    >
+      <div>{{ event.title | uppercase }}</div>
+      <a [routerLink]="['/event-details', event.eventId]"
+        ><fa-icon [icon]="faCircleInfo"></fa-icon
+      ></a>
     </li>
   </ul>
 </div>

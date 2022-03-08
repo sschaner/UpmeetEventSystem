@@ -6,18 +6,23 @@
         class="d-flex justify-content-between"
         *ngIf="event.favorited == true"
       >
-        <a [routerLink]="['/event-details', event.eventId]">{{
-          event.title | uppercase
-        }}</a>
-
-        <form class="d-flex">
-          <button type="submit" class="btn btn-sm btn-outline-danger">
-            <fa-icon [icon]="faTrash"></fa-icon>
-          </button>
-        </form>
+        <div>{{ event.title | uppercase }}</div>
+        <div class="d-flex align-items-center">
+          <a [routerLink]="['/event-details', event.eventId]"
+            ><fa-icon [icon]="faCircleInfo"></fa-icon
+          ></a>
+          <!-- This form will change "favorited" to false -->
+          <form class="d-flex">
+            <button type="submit" class="btn btn-sm btn-outline-danger">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </form>
+        </div>
       </div>
     </li>
   </ul>
 </div>
 
-<button [routerLink]="'/events'" class="btn btn-outline-primary">Home</button>
+<button [routerLink]="'/events'" class="btn btn-outline-primary">
+  <fa-icon [icon]="faHome"></fa-icon>
+</button>
