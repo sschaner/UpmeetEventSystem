@@ -6,6 +6,6 @@ export interface IEvent {
   location: string;
   start: Date;
   end: Date;
-  description: Array<string>;
+  description: string;
   ageRequirement: number;
 }

@@ -1,0 +1,13 @@
+<div *ngIf="eventDetails !== undefined">
+  <h1>
+    Details for <em>{{ eventDetails.title }}</em>
+  </h1>
+  <li>Host: {{ eventDetails.host }}</li>
+  <li>Description: {{ eventDetails.description }}</li>
+  <li>Location: {{ eventDetails.location }}</li>
+  <li>Start Time: {{ eventDetails.start }}</li>
+  <li>End Time: {{ eventDetails.end }}</li>
+  <li>
+    You have to be at least age {{ eventDetails.ageRequirement }} to attend.
+  </li>
+</div>
