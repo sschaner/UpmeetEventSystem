@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import {
   faCircleInfo,
   faHome,
@@ -18,9 +19,15 @@ export class FavoriteEventsComponent implements OnInit {
   faCircleInfo = faCircleInfo;
   faHome = faHome;
 
+  eventDetails: IEvent | undefined;
+
   constructor(private repo: EventsRepositoryService) {}
 
   ngOnInit(): void {
     this.events = this.repo.getEvents();
+  }
+
+  setFavorite(form: NgForm) {
+    this.events[form.form.value.id - 1].favorited = false;
   }
 }

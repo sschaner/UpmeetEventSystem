@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faHome } from '@fortawesome/free-solid-svg-icons';
 import { EventsRepositoryService } from '../events-repository.service';
 import { IEvent } from '../interfaces/IEvent';
 
@@ -13,8 +13,11 @@ import { IEvent } from '../interfaces/IEvent';
 export class EventDetailsComponent implements OnInit {
   id: number = 1;
   faHome = faHome;
+  faHeart = faHeart;
 
   eventDetails: IEvent | undefined;
+
+  favoriteAnswers: string[] = ['Yes', 'No'];
 
   constructor(
     private repo: EventsRepositoryService,
@@ -27,6 +30,10 @@ export class EventDetailsComponent implements OnInit {
   }
 
   setFavorite(form: NgForm) {
-    console.log(form.form.value);
+    if (form.form.value.isFavorite.toLowerCase() === 'yes') {
+      this.eventDetails!.favorited = true;
+    } else if (form.form.value.isFavorite.toLowerCase() === 'no') {
+      this.eventDetails!.favorited = false;
+    }
   }
 }
