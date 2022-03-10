@@ -14,7 +14,12 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 
 const routes: Routes = [
   { path: 'users', component: UsersListComponent },
-  { path: 'users/:id', component: UserDashboardComponent },
+  { path: 'users/:userId', component: UserDashboardComponent },
+  {
+    path: 'users/:userId/event-details/:eventId',
+    component: EventDetailsComponent,
+  },
+  { path: 'users/:userId/favorite-events', component: FavoriteEventsComponent },
   { path: 'events', component: EventListComponent },
   { path: 'event-details/:id', component: EventDetailsComponent },
   { path: 'favorite-events', component: FavoriteEventsComponent },

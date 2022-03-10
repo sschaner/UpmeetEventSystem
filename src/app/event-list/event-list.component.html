@@ -6,13 +6,16 @@
       *ngFor="let event of events"
     >
       <div>{{ event.title | uppercase }}</div>
-      <a [routerLink]="['/event-details', event.eventId]"
+      <a [routerLink]="['/users', userId, 'event-details', event.eventId]"
         ><fa-icon [icon]="faCircleInfo"></fa-icon
       ></a>
     </li>
   </ul>
 </div>
 
-<button [routerLink]="'/favorite-events'" class="btn btn-outline-primary">
+<button
+  [routerLink]="['/users', userId, 'favorite-events']"
+  class="btn btn-outline-primary"
+>
   Favorite Events
 </button>

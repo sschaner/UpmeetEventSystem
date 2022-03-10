@@ -1,3 +1,7 @@
 .favorite-button {
   margin-left: 0.5rem;
 }
+
+.favorite-container > * {
+  margin: 0.5rem;
+}

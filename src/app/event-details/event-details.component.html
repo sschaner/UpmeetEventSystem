@@ -13,8 +13,19 @@
 
   <div class="mb-3 mt-3">
     <h4>Is this event one of your favorites?</h4>
+
+    <div class="d-flex align-items-center favorite-container">
+      <button class="btn btn-sm btn-outline-primary" (click)="favoriteYes()">
+        <fa-icon [icon]="faThumbsUp"></fa-icon>
+      </button>
+      <button class="btn btn-sm btn-outline-danger" (click)="favoriteNo()">
+        <fa-icon [icon]="faThumbsDown"></fa-icon>
+      </button>
+      <p>{{ favoritedMessage }}</p>
+    </div>
+
     <!-- This form will change "favorited" to true -->
-    <form
+    <!-- <form
       #favoriteForm="ngForm"
       (ngSubmit)="setFavorite(favoriteForm)"
       class="d-flex"
@@ -38,11 +49,11 @@
       >
         Submit
       </button>
-    </form>
+    </form> -->
   </div>
 </div>
 
-<div class="d-flex justify-content-around">
+<div class="d-flex justify-content-center">
   <button [routerLink]="'/events'" class="btn btn-outline-primary">
     <fa-icon [icon]="faHome"></fa-icon>
   </button>

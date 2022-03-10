@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventsRepositoryService } from '../events-repository.service';
 import { IEvent } from '../interfaces/IEvent';
 import { IUser } from '../interfaces/IUser';
+import { UsersRepositoryService } from '../users-repository.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,17 +10,17 @@ import { IUser } from '../interfaces/IUser';
   styleUrls: ['./user-dashboard.component.css'],
 })
 export class UserDashboardComponent implements OnInit {
-  id: number = 1;
+  userId: number = 1;
   users: IUser[] = [];
   events: IEvent[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private repo: EventsRepositoryService
+    private repo: UsersRepositoryService
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.events = this.repo.getEvents();
+    this.userId = this.route.snapshot.params['userId'];
+    this.users = this.repo.getUsers();
   }
 }

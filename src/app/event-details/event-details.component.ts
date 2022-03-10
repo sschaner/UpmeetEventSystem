@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faHeart, faHome } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart,
+  faHome,
+  faThumbsDown,
+  faThumbsUp,
+} from '@fortawesome/free-solid-svg-icons';
 import { EventsRepositoryService } from '../events-repository.service';
 import { IEvent } from '../interfaces/IEvent';
+import { IFavoriteEvent } from '../interfaces/IFavoriteEvent';
 
 @Component({
   selector: 'app-event-details',
@@ -11,13 +17,18 @@ import { IEvent } from '../interfaces/IEvent';
   styleUrls: ['./event-details.component.css'],
 })
 export class EventDetailsComponent implements OnInit {
-  id: number = 1;
+  userId: number = 1;
+  eventId: number = 1;
+  favoriteEvent: IFavoriteEvent | undefined;
+  favoriteEvents: IFavoriteEvent[] = [];
+  favoritedMessage: string = '';
+
   faHome = faHome;
   faHeart = faHeart;
+  faThumbsUp = faThumbsUp;
+  faThumbsDown = faThumbsDown;
 
   eventDetails: IEvent | undefined;
-
-  favoriteAnswers: string[] = ['Yes', 'No'];
 
   constructor(
     private repo: EventsRepositoryService,
@@ -25,17 +36,23 @@ export class EventDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.eventDetails = this.repo.getEventDetails(this.id);
+    this.userId = this.route.snapshot.params['userId'];
+    this.eventId = this.route.snapshot.params['eventId'];
+    this.eventDetails = this.repo.getEventDetails(this.eventId);
+    this.favoriteEvents = this.repo.getFavoriteEvents();
   }
 
-  setFavorite(form: NgForm) {
-    if (form.form.value.isFavorite.toLowerCase() === 'yes') {
-      this.eventDetails!.favorited = true;
-      // Add to favorites table
-    } else if (form.form.value.isFavorite.toLowerCase() === 'no') {
-      this.eventDetails!.favorited = false;
-      // Remove from favorites table
-    }
+  favoriteYes() {
+    // Add event with this eventId and userId to favorites table
+    console.log(`User Id: ${this.userId}`);
+    console.log(`Event: ${this.eventDetails}`);
+    this.favoritedMessage =
+      "You've successfully added this event to your favorites.";
+  }
+
+  favoriteNo() {
+    // Remove event with this eventId and userId to favorites table
+    this.favoritedMessage =
+      "You've successfully removed this event from your favorites.";
   }
 }

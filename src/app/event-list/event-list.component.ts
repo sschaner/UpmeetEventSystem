@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { EventsRepositoryService } from '../events-repository.service';
 import { IEvent } from '../interfaces/IEvent';
@@ -9,6 +9,7 @@ import { IEvent } from '../interfaces/IEvent';
   styleUrls: ['./event-list.component.css'],
 })
 export class EventListComponent implements OnInit {
+  @Input() userId: any | undefined;
   events: IEvent[] = [];
   faCircleInfo = faCircleInfo;
 

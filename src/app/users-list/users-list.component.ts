@@ -19,8 +19,6 @@ export class UsersListComponent implements OnInit {
   }
 
   setUser(form: NgForm) {
-    console.log(form.form.value.userId);
-    this.router.navigate(['/users', form.form.value.userId]);
-    // [routerLink]="['/event-details', event.eventId]"
+    this.router.navigate([`/users`, form.form.value.userId]);
   }
 }

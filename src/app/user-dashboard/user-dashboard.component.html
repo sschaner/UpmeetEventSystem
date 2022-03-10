@@ -1,1 +1,6 @@
-<p>user-dashboard works!</p>
+<h1>Welcome to Your User Dashboard, {{ users[userId - 1].name }}</h1>
+<p>
+  Below, you will find a list of events to meet at. Feel free to explore each
+  one and add some to your favorite list.
+</p>
+<app-event-list [userId]="userId"></app-event-list>

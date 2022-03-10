@@ -15,6 +15,7 @@ import { IEvent } from '../interfaces/IEvent';
 })
 export class FavoriteEventsComponent implements OnInit {
   events: IEvent[] = [];
+  favoriteEvents: IEvent[] = [];
   faTrash = faTrash;
   faCircleInfo = faCircleInfo;
   faHome = faHome;
@@ -27,7 +28,5 @@ export class FavoriteEventsComponent implements OnInit {
     this.events = this.repo.getEvents();
   }
 
-  setFavorite(form: NgForm) {
-    this.events[form.form.value.id - 1].favorited = false;
-  }
+  setFavorite(form: NgForm) {}
 }
