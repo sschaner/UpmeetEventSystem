@@ -1,0 +1,20 @@
+<h1>Welcome to the Upmeet Event System</h1>
+<div class="user-choice-form">
+  <form #getUserForm="ngForm" (ngSubmit)="setUser(getUserForm)">
+    <h3>Please Choose Your Name</h3>
+    <div class="form-check" *ngFor="let user of users">
+      <input
+        class="form-check-input"
+        type="radio"
+        value="{{ user.userId }}"
+        name="userId"
+        id="{{ user.userId }}"
+        ngModel
+      />
+      <label class="form-check-label" for="{{ user.userId }}">
+        {{ user.name }}
+      </label>
+    </div>
+    <button type="submit" class="btn btn-sm btn-outline-primary">Submit</button>
+  </form>
+</div>

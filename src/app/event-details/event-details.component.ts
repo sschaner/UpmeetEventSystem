@@ -32,8 +32,10 @@ export class EventDetailsComponent implements OnInit {
   setFavorite(form: NgForm) {
     if (form.form.value.isFavorite.toLowerCase() === 'yes') {
       this.eventDetails!.favorited = true;
+      // Add to favorites table
     } else if (form.form.value.isFavorite.toLowerCase() === 'no') {
       this.eventDetails!.favorited = false;
+      // Remove from favorites table
     }
   }
 }
