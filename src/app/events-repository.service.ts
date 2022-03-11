@@ -79,8 +79,8 @@ export class EventsRepositoryService {
   constructor(private http: HttpClient) {}
 
   getEvents() {
-    // return this.allEvents;
-    return this.http.get(this.apiUri);
+    return this.allEvents;
+    // return this.http.get(this.apiUri);
   }
 
   getFavoriteEvents() {
