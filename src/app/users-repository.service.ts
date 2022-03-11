@@ -50,7 +50,9 @@ export class UsersRepositoryService {
     },
   ];
 
-  private apiUri: string = 'https://localhost:44381/api/user';
+  private localHostNumber = 44381;
+
+  private apiUri: string = `https://localhost:${this.localHostNumber}/api/user`;
 
   constructor(private http: HttpClient) {}
 

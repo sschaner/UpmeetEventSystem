@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { IEvent } from './interfaces/IEvent';
 import { IFavoriteEvent } from './interfaces/IFavoriteEvent';
 import { IUser } from './interfaces/IUser';
@@ -19,7 +20,6 @@ export class EventsRepositoryService {
       location: 'Grand Rapids',
       start: new Date(2022, 3, 7, 18, 0, 0, 0),
       end: new Date(2022, 3, 7, 19, 0, 0, 0),
-      ageRequirement: 18,
     },
     {
       eventId: 2,
@@ -30,7 +30,6 @@ export class EventsRepositoryService {
       location: 'Grand Rapids',
       start: new Date(2022, 3, 11, 8, 0, 0, 0),
       end: new Date(2022, 3, 11, 9, 0, 0, 0),
-      ageRequirement: 18,
     },
     {
       eventId: 3,
@@ -41,7 +40,6 @@ export class EventsRepositoryService {
       location: 'Grand Rapids',
       start: new Date(2022, 3, 21, 18, 0, 0, 0),
       end: new Date(2022, 3, 21, 19, 30, 0, 0),
-      ageRequirement: 18,
     },
   ];
 
@@ -57,7 +55,6 @@ export class EventsRepositoryService {
         location: 'Grand Rapids',
         start: new Date(2022, 3, 21, 18, 0, 0, 0),
         end: new Date(2022, 3, 21, 19, 30, 0, 0),
-        ageRequirement: 18,
       },
     },
     {
@@ -71,15 +68,19 @@ export class EventsRepositoryService {
         location: 'Grand Rapids',
         start: new Date(2022, 3, 21, 18, 0, 0, 0),
         end: new Date(2022, 3, 21, 19, 30, 0, 0),
-        ageRequirement: 18,
       },
     },
   ];
 
-  constructor() {}
+  private localHostNumber = 44381;
+
+  private apiUri: string = `https://localhost:${this.localHostNumber}/api/event`;
+
+  constructor(private http: HttpClient) {}
 
   getEvents() {
-    return this.allEvents;
+    // return this.allEvents;
+    return this.http.get(this.apiUri);
   }
 
   getFavoriteEvents() {
