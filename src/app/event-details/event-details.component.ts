@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  faHeart,
   faHome,
   faThumbsDown,
   faThumbsUp,
@@ -24,7 +23,6 @@ export class EventDetailsComponent implements OnInit {
   favoritedMessage: string = '';
 
   faHome = faHome;
-  faHeart = faHeart;
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
 

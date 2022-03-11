@@ -10,12 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements OnInit {
-  users: IUser[] = [];
+  // users: IUser[] = [];
+  users: any;
 
   constructor(private repo: UsersRepositoryService, private router: Router) {}
 
   ngOnInit(): void {
-    this.users = this.repo.getUsers();
+    // this.users = this.repo.getUsers();
+    this.repo.getUsers().subscribe((response) => {
+      this.users = response;
+    });
   }
 
   setUser(form: NgForm) {

@@ -11,8 +11,9 @@ import { UsersRepositoryService } from '../users-repository.service';
 })
 export class UserDashboardComponent implements OnInit {
   userId: number = 1;
-  users: IUser[] = [];
+  // users: IUser[] = [];
   events: IEvent[] = [];
+  users: any;
 
   constructor(
     private route: ActivatedRoute,

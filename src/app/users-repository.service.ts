@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { IUser } from './interfaces/IUser';
 
 @Injectable({
@@ -9,41 +10,52 @@ export class UsersRepositoryService {
   users: IUser[] = [
     {
       userId: 1,
-      name: 'Son Goku',
+      firstName: 'Son Goku',
+      lastName: 'lastName1',
     },
     {
       userId: 2,
-      name: 'Bulma',
+      firstName: 'Bulma',
+      lastName: 'lastName2',
     },
     {
       userId: 3,
-      name: 'Krillin',
+      firstName: 'Krillin',
+      lastName: 'lastName3',
     },
     {
       userId: 4,
-      name: 'Piccolo',
+      firstName: 'Piccolo',
+      lastName: 'lastName4',
     },
     {
       userId: 5,
-      name: 'Son Gohan',
+      firstName: 'Son Gohan',
+      lastName: 'lastName5',
     },
     {
       userId: 6,
-      name: 'Vegeta',
+      firstName: 'Vegeta',
+      lastName: 'lastName6',
     },
     {
       userId: 7,
-      name: 'Bardock',
+      firstName: 'Bardock',
+      lastName: 'lastName7',
     },
     {
       userId: 8,
-      name: 'Trunks',
+      firstName: 'Trunks',
+      lastName: 'lastName8',
     },
   ];
 
-  constructor() {}
+  private apiUri: string = 'https://localhost:44381/api/user';
+
+  constructor(private http: HttpClient) {}
 
   getUsers() {
-    return this.users;
+    // return this.users;
+    return this.http.get(this.apiUri);
   }
 }
