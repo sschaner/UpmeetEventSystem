@@ -10,16 +10,16 @@ import { IEvent } from '../interfaces/IEvent';
 })
 export class EventListComponent implements OnInit {
   @Input() userId: any | undefined;
-  events: IEvent[] = [];
-  // events: any;
+  // events: IEvent[] = [];
+  events: any;
   faCircleInfo = faCircleInfo;
 
   constructor(private repo: EventsRepositoryService) {}
 
   ngOnInit(): void {
-    this.events = this.repo.getEvents();
-    // this.repo.getEvents().subscribe((response) => {
-    //   this.events = response;
-    // });
+    // this.events = this.repo.getEvents();
+    this.repo.getEvents().subscribe((response) => {
+      this.events = response;
+    });
   }
 }

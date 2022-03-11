@@ -14,7 +14,8 @@ import { IEvent } from '../interfaces/IEvent';
   styleUrls: ['./favorite-events.component.css'],
 })
 export class FavoriteEventsComponent implements OnInit {
-  events: IEvent[] = [];
+  // events: IEvent[] = [];
+  events: any;
   favoriteEvents: IEvent[] = [];
   faTrash = faTrash;
   faCircleInfo = faCircleInfo;
