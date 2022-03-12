@@ -14,6 +14,7 @@ export class UserDashboardComponent implements OnInit {
   // users: IUser[] = [];
   events: IEvent[] = [];
   users: any;
+  user: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,16 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
-    this.users = this.repo.getUsers();
+    this.repo.getUsers().subscribe((response) => {
+      this.users = response;
+    });
+    // this.users = this.repo.getUsers();
+    this.user = this.repo.getUserById(this.userId);
+    console.log(`User Id: ${this.userId}`);
+    this.repo.getUserById(this.userId).subscribe((response) => {
+      this.user = response;
+    });
+    console.log(this.users);
+    console.log(`User: ${this.user.firstName}`);
   }
 }
