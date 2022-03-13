@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { textChangeRangeIsUnchanged } from 'typescript';
 import { EventsRepositoryService } from '../events-repository.service';
 import { IEvent } from '../interfaces/IEvent';
 
@@ -10,16 +12,32 @@ import { IEvent } from '../interfaces/IEvent';
 })
 export class EventListComponent implements OnInit {
   @Input() userId: any | undefined;
-  // events: IEvent[] = [];
   events: any;
+  addEvent: boolean = false;
+  addEventButtonText: string = 'Add an Event';
+
+  // FontAwesome Icons
   faCircleInfo = faCircleInfo;
 
   constructor(private repo: EventsRepositoryService) {}
 
   ngOnInit(): void {
-    // this.events = this.repo.getEvents();
     this.repo.getEvents().subscribe((response) => {
       this.events = response;
     });
+  }
+
+  addEventButton() {
+    this.addEvent = !this.addEvent;
+    console.log(this.addEvent);
+    if (this.addEvent == true) {
+      this.addEventButtonText = 'Hide Form';
+    } else if (this.addEvent == false) {
+      this.addEventButtonText = 'Add an Event';
+    }
+  }
+
+  saveEvent(form: NgForm) {
+    // Call create event method from back end
   }
 }

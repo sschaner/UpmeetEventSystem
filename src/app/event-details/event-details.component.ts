@@ -23,11 +23,10 @@ export class EventDetailsComponent implements OnInit {
   favoriteEvents: IFavoriteEvent[] = [];
   favoritedMessage: string = '';
 
+  // FontAwesome Icons
   faHome = faHome;
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
-
-  // eventDetails: IEvent | undefined;
 
   constructor(
     private repo: EventsRepositoryService,
@@ -40,7 +39,6 @@ export class EventDetailsComponent implements OnInit {
     this.repo.getEventById(this.eventId).subscribe((response) => {
       this.event = response;
     });
-    // this.eventDetails = this.repo.getEventDetails(this.eventId);
     this.favoriteEvents = this.repo.getFavoriteEvents();
   }
 

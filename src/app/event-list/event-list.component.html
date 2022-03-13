@@ -1,4 +1,4 @@
-<div>
+<div class="event-list">
   <h1>Events</h1>
   <ul class="list-group list-group-flush">
     <li
@@ -11,6 +11,108 @@
       ></a>
     </li>
   </ul>
+</div>
+
+<button
+  type="button"
+  class="btn btn-outline-primary"
+  (click)="addEventButton()"
+>
+  {{ addEventButtonText }}
+</button>
+
+<div class="col-md-6 mb-3 mt-3 add-event" *ngIf="addEvent == true">
+  <form name="addEventForm" #addEventForm="ngForm">
+    <h3>Please Add Event Information</h3>
+    <div class="form-group">
+      <label for="eventTitle">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="eventTitle"
+        placeholder="Enter title"
+        name="title"
+        ngModel
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventHost">Host Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="eventHost"
+        placeholder="Enter host"
+        name="host"
+        ngModel
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventDescription">Description</label>
+      <textarea
+        class="form-control"
+        id="eventDescription"
+        rows="5"
+        name="description"
+        ngModel
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="eventLocation">Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="eventLocation"
+        placeholder="Enter location"
+        name="location"
+        ngModel
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventStart">Start Time</label>
+      <input
+        type="text"
+        class="form-control"
+        id="eventStart"
+        aria-describedby="startHelp"
+        placeholder="Enter start date and time"
+        name="start"
+        ngModel
+        required
+      />
+      <small id="startHelp" class="form-text text-muted"
+        >Please enter in the format (YearMonthDay Hours:Minutes:seconds AM or
+        PM).</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="eventEnd">End Time</label>
+      <input
+        type="text"
+        class="form-control"
+        id="eventEnd"
+        aria-describedby="endHelp"
+        placeholder="Enter end date and time"
+        name="end"
+        ngModel
+        required
+      />
+      <small id="endHelp" class="form-text text-muted"
+        >Please enter in the format (YearMonthDay Hours:Minutes:seconds AM or
+        PM).</small
+      >
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="saveEvent(addEventForm)"
+    >
+      Submit
+    </button>
+  </form>
 </div>
 
 <button
