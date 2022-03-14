@@ -29,7 +29,6 @@ export class EventListComponent implements OnInit {
 
   addEventButton() {
     this.addEvent = !this.addEvent;
-    console.log(this.addEvent);
     if (this.addEvent == true) {
       this.addEventButtonText = 'Hide Form';
     } else if (this.addEvent == false) {
@@ -38,6 +37,12 @@ export class EventListComponent implements OnInit {
   }
 
   saveEvent(form: NgForm) {
-    // Call create event method from back end
+    let upMeet = form.form.value;
+
+    this.repo.saveNewEvent(upMeet).subscribe((response) => {
+      console.log(response);
+    });
+
+    // return this.repo.saveNewEvent(upMeet);
   }
 }

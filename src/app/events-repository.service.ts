@@ -50,6 +50,10 @@ export class EventsRepositoryService {
     return this.http.get(`${this.apiUri}/${id}`);
   }
 
+  saveNewEvent(upMeet: Event) {
+    return this.http.post(this.apiUri, upMeet);
+  }
+
   getFavoriteEvents() {
     return this.favoriteEvents;
   }
