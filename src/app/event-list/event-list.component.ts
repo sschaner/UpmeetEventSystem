@@ -2,9 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { textChangeRangeIsUnchanged } from 'typescript';
 import { EventsRepositoryService } from '../events-repository.service';
-import { IEvent } from '../interfaces/IEvent';
 
 @Component({
   selector: 'app-event-list',

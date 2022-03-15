@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IEvent } from '../interfaces/IEvent';
-import { IUser } from '../interfaces/IUser';
 import { UsersRepositoryService } from '../users-repository.service';
 
 @Component({
@@ -11,7 +9,6 @@ import { UsersRepositoryService } from '../users-repository.service';
 })
 export class UserDashboardComponent implements OnInit {
   userId: number = 1;
-  events: IEvent[] = [];
   users: any;
   user: any;
 

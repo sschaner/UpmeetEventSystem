@@ -24,13 +24,7 @@
 </div>
 
 <div class="d-flex justify-content-center">
-  <button [routerLink]="'/events'" class="btn btn-outline-primary">
+  <button [routerLink]="['/users', userId]" class="btn btn-outline-primary">
     <fa-icon [icon]="faHome"></fa-icon>
-  </button>
-  <button
-    [routerLink]="['/users', userId, 'favorite-events']"
-    class="btn btn-outline-danger"
-  >
-    Favorites
   </button>
 </div>

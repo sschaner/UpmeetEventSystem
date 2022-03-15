@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   faHome,
   faThumbsDown,
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { EventsRepositoryService } from '../events-repository.service';
-import { IEvent } from '../interfaces/IEvent';
 import { IFavoriteEvent } from '../interfaces/IFavoriteEvent';
 
 @Component({
@@ -30,8 +28,7 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private repo: EventsRepositoryService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
