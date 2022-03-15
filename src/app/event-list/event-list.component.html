@@ -9,6 +9,9 @@
       <a [routerLink]="['/users', userId, 'event-details', event.eventId]"
         ><fa-icon [icon]="faCircleInfo"></fa-icon
       ></a>
+      <button (click)="removeEvent(event.eventId)">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </button>
     </li>
   </ul>
 </div>

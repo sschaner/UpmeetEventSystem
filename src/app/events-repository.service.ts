@@ -54,6 +54,10 @@ export class EventsRepositoryService {
     return this.http.post(this.apiUri, upMeet);
   }
 
+  removeEvent(id: number) {
+    return this.http.delete(`${this.apiUri}/${id}`);
+  }
+
   getFavoriteEvents() {
     return this.favoriteEvents;
   }

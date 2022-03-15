@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { textChangeRangeIsUnchanged } from 'typescript';
 import { EventsRepositoryService } from '../events-repository.service';
 import { IEvent } from '../interfaces/IEvent';
@@ -15,9 +15,11 @@ export class EventListComponent implements OnInit {
   events: any;
   addEvent: boolean = false;
   addEventButtonText: string = 'Add an Event';
+  eventId = 1;
 
   // FontAwesome Icons
   faCircleInfo = faCircleInfo;
+  faTrash = faTrash;
 
   constructor(private repo: EventsRepositoryService) {}
 
@@ -44,5 +46,11 @@ export class EventListComponent implements OnInit {
     });
 
     // return this.repo.saveNewEvent(upMeet);
+  }
+
+  removeEvent(eventId: number) {
+    this.repo.removeEvent(eventId).subscribe((response) => {
+      console.log(response);
+    });
   }
 }
