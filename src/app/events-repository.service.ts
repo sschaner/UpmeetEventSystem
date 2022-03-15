@@ -59,8 +59,17 @@ export class EventsRepositoryService {
     return this.http.delete(`${this.apiUri}/${id}`);
   }
 
-  getFavoriteEventById(id: number) {
+  getFavoriteEventsByUserId(id: number) {
     return this.http.get(`${this.apiUri2}/${id}`);
+  }
+
+  AddFavoriteEvent(userId: number, eventId: number) {
+    return this.http.post(this.apiUri2, { userId, eventId });
+  }
+
+  RemoveFavoriteEvent(userId: number, eventId: number) {
+    // Multiple params in a delete won't work.
+    // return this.http.delete(this.apiUri2, { userId, eventId });
   }
 
   getFavoriteEvents() {

@@ -25,7 +25,6 @@ export class UserDashboardComponent implements OnInit {
     this.repo.getUsers().subscribe((response) => {
       this.users = response;
     });
-    this.user = this.repo.getUserById(this.userId);
     this.repo.getUserById(this.userId).subscribe((response) => {
       this.user = response;
     });

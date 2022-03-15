@@ -30,7 +30,8 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private repo: EventsRepositoryService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,8 +45,9 @@ export class EventDetailsComponent implements OnInit {
 
   favoriteYes() {
     // Add event with this eventId and userId to favorites table
-    console.log(`User Id: ${this.userId}`);
-    // console.log(`Event: ${this.eventDetails}`);
+    this.repo
+      .AddFavoriteEvent(this.userId, this.eventId)
+      .subscribe((response) => {});
     this.favoritedMessage =
       "You've successfully added this event to your favorites.";
   }
@@ -55,4 +57,10 @@ export class EventDetailsComponent implements OnInit {
     this.favoritedMessage =
       "You've successfully removed this event from your favorites.";
   }
+
+  // getAllUserFavoriteEvents(userId: number) {
+  //   this.repo.getFavoriteEventsByUserId(this.userId).subscribe((response) => {
+  //     this.router.navigate([`/users`, form.form.value.userId]);
+  //   })
+  // }
 }

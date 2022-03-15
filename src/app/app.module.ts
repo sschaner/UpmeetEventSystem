@@ -12,6 +12,7 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { FavoriteEventsComponent } from './favorite-events/favorite-events.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { CoreModule } from './core/core.module';
 
 const routes: Routes = [
   { path: 'users', component: UsersListComponent },
@@ -21,9 +22,6 @@ const routes: Routes = [
     component: EventDetailsComponent,
   },
   { path: 'users/:userId/favorite-events', component: FavoriteEventsComponent },
-  { path: 'events', component: EventListComponent },
-  { path: 'event-details/:id', component: EventDetailsComponent },
-  { path: 'favorite-events', component: FavoriteEventsComponent },
   { path: '', redirectTo: '/users', pathMatch: 'full' },
 ];
 
@@ -42,6 +40,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    CoreModule,
     FontAwesomeModule,
   ],
   providers: [],

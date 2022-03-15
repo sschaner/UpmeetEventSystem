@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import {
   faCircleInfo,
   faHome,
@@ -15,6 +16,7 @@ import { IEvent } from '../interfaces/IEvent';
 })
 export class FavoriteEventsComponent implements OnInit {
   // events: IEvent[] = [];
+  userId: number = 1;
   events: any;
   favoriteEvents: IEvent[] = [];
   faTrash = faTrash;
@@ -23,9 +25,13 @@ export class FavoriteEventsComponent implements OnInit {
 
   eventDetails: IEvent | undefined;
 
-  constructor(private repo: EventsRepositoryService) {}
+  constructor(
+    private repo: EventsRepositoryService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.params['userId'];
     this.events = this.repo.getEvents();
   }
 
