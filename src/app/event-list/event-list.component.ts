@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { textChangeRangeIsUnchanged } from 'typescript';
 import { EventsRepositoryService } from '../events-repository.service';
@@ -21,7 +22,7 @@ export class EventListComponent implements OnInit {
   faCircleInfo = faCircleInfo;
   faTrash = faTrash;
 
-  constructor(private repo: EventsRepositoryService) {}
+  constructor(private repo: EventsRepositoryService, private router: Router) {}
 
   ngOnInit(): void {
     this.repo.getEvents().subscribe((response) => {
@@ -42,15 +43,13 @@ export class EventListComponent implements OnInit {
     let upMeet = form.form.value;
 
     this.repo.saveNewEvent(upMeet).subscribe((response) => {
-      console.log(response);
+      window.location.reload();
     });
-
-    // return this.repo.saveNewEvent(upMeet);
   }
 
   removeEvent(eventId: number) {
     this.repo.removeEvent(eventId).subscribe((response) => {
-      console.log(response);
+      window.location.reload();
     });
   }
 }

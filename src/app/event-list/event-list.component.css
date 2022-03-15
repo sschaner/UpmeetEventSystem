@@ -1,3 +1,7 @@
 a {
   text-decoration: none;
 }
+
+#add-event-button {
+  margin-right: 1rem;
+}

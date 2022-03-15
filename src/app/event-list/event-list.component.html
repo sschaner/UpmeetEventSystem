@@ -2,16 +2,18 @@
   <h1>Events</h1>
   <ul class="list-group list-group-flush">
     <li
-      class="list-group-item d-flex justify-content-between"
+      class="list-group-item d-flex justify-content-between align-items-center"
       *ngFor="let event of events"
     >
       <div>{{ event.title | uppercase }}</div>
-      <a [routerLink]="['/users', userId, 'event-details', event.eventId]"
-        ><fa-icon [icon]="faCircleInfo"></fa-icon
-      ></a>
-      <button (click)="removeEvent(event.eventId)">
-        <fa-icon [icon]="faTrash"></fa-icon>
-      </button>
+      <div class="d-flex align-items-center">
+        <a [routerLink]="['/users', userId, 'event-details', event.eventId]"
+          ><fa-icon [icon]="faCircleInfo"></fa-icon
+        ></a>
+        <a class="btn text-danger" (click)="removeEvent(event.eventId)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </a>
+      </div>
     </li>
   </ul>
 </div>
@@ -20,6 +22,7 @@
   type="button"
   class="btn btn-outline-primary"
   (click)="addEventButton()"
+  id="add-event-button"
 >
   {{ addEventButtonText }}
 </button>
