@@ -39,6 +39,7 @@ export class EventsRepositoryService {
 
   private localHostNumber = 44381;
   private apiUri: string = `https://localhost:${this.localHostNumber}/api/event`;
+  private apiUri2: string = `https://localhost:${this.localHostNumber}/api/userevent`;
 
   constructor(private http: HttpClient) {}
 
@@ -56,6 +57,10 @@ export class EventsRepositoryService {
 
   removeEvent(id: number) {
     return this.http.delete(`${this.apiUri}/${id}`);
+  }
+
+  getFavoriteEventById(id: number) {
+    return this.http.get(`${this.apiUri2}/${id}`);
   }
 
   getFavoriteEvents() {
