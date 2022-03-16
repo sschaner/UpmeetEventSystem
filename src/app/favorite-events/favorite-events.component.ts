@@ -7,7 +7,6 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { EventsRepositoryService } from '../events-repository.service';
-import { IEvent } from '../interfaces/IEvent';
 
 @Component({
   selector: 'app-favorite-events',
@@ -15,15 +14,14 @@ import { IEvent } from '../interfaces/IEvent';
   styleUrls: ['./favorite-events.component.css'],
 })
 export class FavoriteEventsComponent implements OnInit {
-  // events: IEvent[] = [];
   userId: number = 1;
   events: any;
-  favoriteEvents: IEvent[] = [];
+  favoriteEvents: any;
+
+  // Fontawesome Icons
   faTrash = faTrash;
   faCircleInfo = faCircleInfo;
   faHome = faHome;
-
-  eventDetails: IEvent | undefined;
 
   constructor(
     private repo: EventsRepositoryService,
@@ -33,6 +31,9 @@ export class FavoriteEventsComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
     this.events = this.repo.getEvents();
+    this.repo.getFavoriteEventsByUserId(this.userId).subscribe((response) => {
+      this.favoriteEvents = response;
+    });
   }
 
   setFavorite(form: NgForm) {}

@@ -1,12 +1,16 @@
-<div *ngIf="event !== undefined">
-  <h1>
-    Details for <em>{{ event.title }}</em>
-  </h1>
-  <li>Host: {{ event.host }}</li>
-  <li>Description: {{ event.description }}</li>
-  <li>Location: {{ event.location }}</li>
-  <li>Start Time: {{ event.start }}</li>
-  <li>End Time: {{ event.end }}</li>
+<div *ngIf="event !== undefined" class="mt-3">
+  <div class="card">
+    <h5 class="card-header">{{ event.title }}</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b>Host:</b> {{ event.host }}</li>
+      <li class="list-group-item">
+        <b>Description:</b> {{ event.description }}
+      </li>
+      <li class="list-group-item"><b>Location:</b> {{ event.location }}</li>
+      <li class="list-group-item"><b>Start Time:</b> {{ event.start }}</li>
+      <li class="list-group-item"><b>End Time:</b> {{ event.end }}</li>
+    </ul>
+  </div>
 
   <div class="mb-3 mt-3">
     <h4>Is this event one of your favorites?</h4>
