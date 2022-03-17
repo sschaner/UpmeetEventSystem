@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IEvent } from './interfaces/IEvent';
 import { IFavoriteEvent } from './interfaces/IFavoriteEvent';
-import { IUser } from './interfaces/IUser';
 
 @Injectable({
   providedIn: 'root',
@@ -64,15 +62,19 @@ export class EventsRepositoryService {
   }
 
   AddFavoriteEvent(userId: number, eventId: number) {
-    return this.http.post(this.apiUri2, { userId, eventId });
+    return this.http.post(
+      `${this.apiUri2}?userId=${userId}&eventId=${eventId}`,
+      { userId, eventId }
+    );
   }
 
   RemoveFavoriteEvent(userId: number, eventId: number) {
-    // Multiple params in a delete won't work.
-    // return this.http.delete(this.apiUri2, { userId, eventId });
+    return this.http.delete(
+      `${this.apiUri2}?userId=${userId}&eventId=${eventId}`
+    );
   }
 
-  getFavoriteEvents() {
-    return this.favoriteEvents;
-  }
+  // getFavoriteEvents() {
+  //   return this.favoriteEvents;
+  // }
 }

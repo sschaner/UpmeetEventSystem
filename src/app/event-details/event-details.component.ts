@@ -20,6 +20,8 @@ export class EventDetailsComponent implements OnInit {
   favoriteEvent: IFavoriteEvent | undefined;
   favoriteEvents: IFavoriteEvent[] = [];
   favoritedMessage: string = '';
+  addFavoriteEventButtonText: string = 'Add to Favorites';
+  favoriteEventFormIsVisible: boolean = false;
 
   // FontAwesome Icons
   faHome = faHome;
@@ -37,20 +39,28 @@ export class EventDetailsComponent implements OnInit {
     this.repo.getEventById(this.eventId).subscribe((response) => {
       this.event = response;
     });
-    this.favoriteEvents = this.repo.getFavoriteEvents();
+    // this.favoriteEvents = this.repo.getFavoriteEvents();
+  }
+
+  addFavoriteEventButton() {
+    this.favoriteEventFormIsVisible = !this.favoriteEventFormIsVisible;
+    if (this.favoriteEventFormIsVisible == true) {
+      this.addFavoriteEventButtonText = 'Hide Form';
+    } else if (this.favoriteEventFormIsVisible == false) {
+      this.addFavoriteEventButtonText = 'Add to Favorites';
+    }
   }
 
   favoriteYes() {
     // Add event with this eventId and userId to favorites table
-    this.repo
-      .AddFavoriteEvent(this.userId, this.eventId)
-      .subscribe((response) => {});
+    this.repo.AddFavoriteEvent(this.userId, this.eventId);
     this.favoritedMessage =
       "You've successfully added this event to your favorites.";
   }
 
   favoriteNo() {
     // Remove event with this eventId and userId to favorites table
+    // this.repo.RemoveFavoriteEvent(this.userId, this.eventId);
     this.favoritedMessage =
       "You've successfully removed this event from your favorites.";
   }
