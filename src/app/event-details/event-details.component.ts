@@ -53,14 +53,18 @@ export class EventDetailsComponent implements OnInit {
 
   favoriteYes() {
     // Add event with this eventId and userId to favorites table
-    this.repo.AddFavoriteEvent(this.userId, this.eventId);
+    this.repo
+      .AddFavoriteEvent(this.userId, this.eventId)
+      .subscribe((response) => {});
     this.favoritedMessage =
       "You've successfully added this event to your favorites.";
   }
 
   favoriteNo() {
     // Remove event with this eventId and userId to favorites table
-    // this.repo.RemoveFavoriteEvent(this.userId, this.eventId);
+    this.repo
+      .RemoveFavoriteEvent(this.userId, this.eventId)
+      .subscribe((resonse) => {});
     this.favoritedMessage =
       "You've successfully removed this event from your favorites.";
   }
