@@ -33,7 +33,6 @@ export class FavoriteEventsComponent implements OnInit {
     this.events = this.repo.getEvents();
     this.repo.getFavoriteEventsByUserId(this.userId).subscribe((response) => {
       this.favoriteEvents = response;
-      console.log(this.favoriteEvents);
     });
   }
 }

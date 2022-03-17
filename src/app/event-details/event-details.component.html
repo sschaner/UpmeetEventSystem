@@ -22,7 +22,13 @@
       <button class="btn btn-sm btn-outline-danger" (click)="favoriteNo()">
         <fa-icon [icon]="faThumbsDown"></fa-icon>
       </button>
-      <p>{{ favoritedMessage }}</p>
+      <p
+        [ngClass]="
+          favoritedMessageColor == true ? 'text-primary' : 'text-danger'
+        "
+      >
+        {{ favoritedMessage }}
+      </p>
     </div>
   </div>
 </div>

@@ -6,7 +6,6 @@ import {
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { EventsRepositoryService } from '../events-repository.service';
-import { IFavoriteEvent } from '../interfaces/IFavoriteEvent';
 
 @Component({
   selector: 'app-event-details',
@@ -19,6 +18,7 @@ export class EventDetailsComponent implements OnInit {
   event: any;
   favoritedMessage: string = '';
   addFavoriteEventButtonText: string = 'Add to Favorites';
+  favoritedMessageColor: boolean = true;
   favoriteEventFormIsVisible: boolean = false;
 
   // FontAwesome Icons
@@ -52,6 +52,7 @@ export class EventDetailsComponent implements OnInit {
     this.repo
       .AddFavoriteEvent(this.userId, this.eventId)
       .subscribe((response) => {});
+    this.favoritedMessageColor = true;
     this.favoritedMessage =
       "You've successfully added this event to your favorites.";
   }
@@ -60,6 +61,7 @@ export class EventDetailsComponent implements OnInit {
     this.repo
       .RemoveFavoriteEvent(this.userId, this.eventId)
       .subscribe((resonse) => {});
+    this.favoritedMessageColor = false;
     this.favoritedMessage =
       "You've successfully removed this event from your favorites.";
   }
