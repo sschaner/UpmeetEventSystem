@@ -4,11 +4,11 @@
     Currently, you don't have any favorite events.
   </p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let event of events">
+    <li class="list-group-item" *ngFor="let event of favoriteEvents">
       <div class="d-flex justify-content-between align-items-center">
         <div>{{ event.title | uppercase }}</div>
         <div class="d-flex align-items-center">
-          <a [routerLink]="['/event-details', event.eventId]"
+          <a [routerLink]="['/users', userId, 'event-details', event.eventId]"
             ><fa-icon [icon]="faCircleInfo"></fa-icon
           ></a>
         </div>
