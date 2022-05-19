@@ -24,6 +24,10 @@ export class EventsRepositoryService {
     return this.http.post(this.apiUri, upMeet);
   }
 
+  updateEventById(id: number, body: Event) {
+    return this.http.put(`${this.apiUri}/${id}`, body);
+  }
+
   removeEvent(id: number) {
     return this.http.delete(`${this.apiUri}/${id}`);
   }

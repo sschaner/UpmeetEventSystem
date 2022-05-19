@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
   faHome,
@@ -64,5 +65,13 @@ export class EventDetailsComponent implements OnInit {
     this.favoritedMessageColor = false;
     this.favoritedMessage =
       "You've successfully removed this event from your favorites.";
+  }
+
+  updateEvent(eventId: number, form: NgForm) {
+    let upMeet = form.form.value;
+
+    this.repo.updateEventById(eventId, upMeet).subscribe((response) => {
+      window.location.reload();
+    });
   }
 }
